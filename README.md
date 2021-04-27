@@ -49,14 +49,28 @@ public class Problem {
 }
 ```
 
+#### Fully qualified class name
+
+다른 패키지의 멤버를 사용하기 위해 패키지 이름까지 포함하여 사용할 수 있다.  
+
+```java
+package com.oh29oh29.study03.sample01;
+
+public class Problem {
+    com.oh29oh29.study03.sample02.Java java = new com.oh29oh29.study03.sample02.Java();
+}
+```
+
+단, 반복해서 입력하면 코드 보기가 어려워지기 때문에 자주 사용되는 멤버인 경우에는 사용을 지양한다.
+
 #### Static Imports
 
 정적 메서드와 정적 상수에 자주 접근하는 코드를 작성해야 할 때가 있을 수 있다.
 정적 메서드 또는 정적 상수를 사용할 때마다 클래스의 이름을 접두사로 지정하는 방법이 있지만 이로 인해 코드가 복잡해질 수 있다.  
-static import 문을 이용하면 매번 클래스의 이름을 접두사로 지정하지 않아도 정적 메서드와 정적 상수를 사용할 수 있으며 코드가 복잡해질 수 잇는 문제를 해결할 수 있다.  
+static import 문을 이용하면 매번 클래스의 이름을 접두사로 지정하지 않아도 정적 메서드와 정적 상수를 사용할 수 있으며 코드가 복잡해질 수 잇는 문제를 해결할 수 있다.
 
 ```java
-package com.oh29oh29.study03.sample02;
+package com.oh29oh29.study04.sample02;
 
 public class Java {
 
@@ -67,11 +81,12 @@ public class Java {
     }
 }
 ```
-```java
-package com.oh29oh29.study03.sample01;
 
-import static com.oh29oh29.study03.sample02.Java.KEYWORD;
-import static com.oh29oh29.study03.sample02.Java.print;
+```java
+package com.oh29oh29.study04.sample01;
+
+import static com.oh29oh29.study04.sample02.Java.KEYWORD;
+import static com.oh29oh29.study04.sample02.Java.print;
 
 public class Problem {
     public static void main(String[] args) {
@@ -80,6 +95,30 @@ public class Problem {
     }
 }
 ```
+
+#### Built-in Packages
+
+Java 는 다음과 같은 패키지에 대해 따로 import 하지 않아도 사용할 수 있도록 해준다.
+
+java.lang
+- language 지원 클래스들을 포함하는 패키지
+- Primitive 타입이나 수학 연산의 정의가 되는 클래스들
+- 자동으로 import 된다.
+
+java.io
+- 입출력 기능을 지원하는 클래스들을 포함하는 패키지
+
+java.util
+- 자료구조 구현을 위한 유틸리티 클래스를 포함하는 패키지
+
+java.applet
+- Applets 을 생성하기 위한 클래스들을 포함하는 패키지
+
+java.awt
+- GUI 컴포넌트를 구현하기 위한 클래스들을 포함하는 패키지
+
+java.net
+- 네트워킹 기능을 지원하기 위한 클래스를 포함하는 패키지
 
 ## CLASSPATH
 
@@ -93,6 +132,10 @@ public class Problem {
 기본 디렉토리 $BASE_DIR 은 파일 시스템의 어디에나 위치 할 수 있다.  
 컴파일러 및 런타임은 클래스를 찾기 위해 $BASE_DIR 의 위치에 대해 알고 있다.  
 어떻게 알 수 있을까? 바로 CLASSPATH 라는 환경 변수에 의해 알 수 있다.
+
+#### Setting CLASSPATH
+
+CLASSPATH 환경변수를 지정하여 영구적으로 사용하거나 Java 어플리케이션을 실행시킬때마다 -classpath 옵션을 사용하여 지정할 수 있다.
 
 <hr>
 
